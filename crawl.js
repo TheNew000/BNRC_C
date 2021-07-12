@@ -22,6 +22,7 @@ process.on('exit', (code) => {
     console.log('Exit Code: ', code);
 });
 
+// this function makes an https request and organizes the body of the page from chunks
 function collectPageData(url, num) {
     let content;
     let counter = num;
@@ -39,6 +40,8 @@ function collectPageData(url, num) {
     });
 };
 
+// this function crawls the content of the body looking for <a> element types 
+// then logs their url if they lead to somewhere else on the same site
 function crawlAndLogLinks(url, content, num) {
     let counter = num;
     let dom = new JSDOM(content);
